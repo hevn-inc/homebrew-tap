@@ -3,7 +3,7 @@ name: Test formula
 on:
   push:
     branches: [main]
-    paths: ["Formula/**"]
+    paths: ["Formula/**", ".github/workflows/test-formula.yml"]
   workflow_dispatch:
 
 jobs:
@@ -21,7 +21,9 @@ jobs:
         run: brew install hevn-inc/tap/hevn-cli
 
       - name: Test formula
-        run: brew test hevn-inc/tap/hevn-cli
+        run: |
+          brew install --only-dependencies hevn-inc/tap/hevn-cli
+          brew test hevn-inc/tap/hevn-cli
 
       - name: Smoke-test binary
         run: |
