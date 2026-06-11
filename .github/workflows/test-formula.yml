@@ -1,0 +1,29 @@
+name: Test formula
+
+on:
+  push:
+    branches: [main]
+    paths: ["Formula/**"]
+  workflow_dispatch:
+
+jobs:
+  install:
+    name: brew install (macOS)
+    runs-on: macos-latest
+    steps:
+      - name: Tap this repository
+        run: |
+          TAP_DIR="$(brew --repository)/Library/Taps/hevn-inc/homebrew-tap"
+          mkdir -p "$(dirname "$TAP_DIR")"
+          git clone --depth 1 --branch "${GITHUB_REF_NAME}" "https://github.com/${GITHUB_REPOSITORY}.git" "$TAP_DIR"
+
+      - name: Install formula
+        run: brew install hevn-inc/tap/hevn-cli
+
+      - name: Test formula
+        run: brew test hevn-inc/tap/hevn-cli
+
+      - name: Smoke-test binary
+        run: |
+          hevn --version
+          hevn --help
