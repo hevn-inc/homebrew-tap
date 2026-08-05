@@ -1,8 +1,8 @@
 class HevnCli < Formula
   desc "Command-line client for the HEVN backend API and MCP transfers"
   homepage "https://gethevn.com"
-  url "https://files.pythonhosted.org/packages/3d/52/1eef1667984d1ef897151a649ff82f26ef6f46ffdb80e1fc466c6a9fd786/hevn_cli-0.1.6.tar.gz"
-  sha256 "70d110767181d912e1bdee2b73ebf35c91b19a21318e28a89fc24375d3cbcbab"
+  url "https://files.pythonhosted.org/packages/20/cd/c33aba7198420276ff7c8a0f4addf7399001a1a6ce932b1f2c517e3bfc9c/hevn_cli-0.1.7.tar.gz"
+  sha256 "e64ac98ccf8b5ad9a048bcd17212af7d6ad56e2c7c934618ac5df1b5b55f070d"
   license "MIT"
 
   depends_on "python@3.12"
